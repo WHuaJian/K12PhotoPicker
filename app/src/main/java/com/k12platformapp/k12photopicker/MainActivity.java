@@ -7,6 +7,7 @@ import android.widget.Button;
 
 import cn.k12cloud.k12photopicker.PhotoPickerUtils;
 
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -14,11 +15,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnOpen = findViewById(R.id.btnOpen);
-        btnOpen.setOnClickListener(new View.OnClickListener() {
+        Button btnOpen_photo = findViewById(R.id.btnOpen_photo);
+        btnOpen_photo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 PhotoPickerUtils.startPhotoPickerActivity(MainActivity.this,10,100);
+            }
+        });
+        Button btnOpen_video = findViewById(R.id.btnOpen_video);
+        btnOpen_video.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PhotoPickerUtils.startVideoPickerActivity(MainActivity.this,10,100);
             }
         });
     }

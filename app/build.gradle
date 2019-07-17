@@ -18,6 +18,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+
+    //解决依赖库版本不一致
+    configurations.all {
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            def requested = details.requested
+            if (requested.group == 'com.android.support') {
+                if (!requested.name.startsWith("multidex")) {
+                    //这里指定需要统一的依赖版本,这里统一为26.1.0
+                    details.useVersion '27.1.1'
+                }
+            }
+        }
+    }
+
 }
 
 dependencies {
